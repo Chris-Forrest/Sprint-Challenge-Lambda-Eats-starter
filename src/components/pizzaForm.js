@@ -24,13 +24,13 @@ export default function Form({
         </select>
         <h2>Toppings</h2>
         <label>Olives</label>
-        <input type="checkbox" name="olives" onChange={checkboxChange} />
-        <label>Pepperoni</label>
         <input type="checkbox" name="pepperoni" onChange={checkboxChange} />
+        <label>Pepperoni</label>
+        <input type="checkbox" name="mushroom" onChange={checkboxChange} />
         <label>Greenbell Peppers</label>
-        <input type="checkbox" name="greenbell" onChange={checkboxChange} />
+        <input type="checkbox" name="sausage" onChange={checkboxChange} />
         <label>Onions</label>
-        <input type="checkbox" name="onions" onChange={checkboxChange}/>
+        <input type="checkbox" name="olives" onChange={checkboxChange}/>
         <label>Special Instructions</label>
         <input type="text" onChange={changeValues} />
         <button onClick={submitOrder} disabled={disabled}>Place Order</button>

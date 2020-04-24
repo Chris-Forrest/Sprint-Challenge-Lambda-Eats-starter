@@ -67,11 +67,38 @@ const App = () => {
     });
   }, [formValues]);
 
+  const checkboxChange = (event) => {
+    setFormValues({
+      ...formValues,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
+  const submitOrder = (event) => {
+    event.preventDefault();
+
+    const newOrder = {
+      name: formValues.name,
+      size: formValues.size,
+      pepperoni: formValues.pepperoni,
+      mushroom: formValues.mushroom,
+      sausage: formValues.sausage,
+      olives: formValues.olives,
+      special: formValues.special
+    };
+    const postOrder = (order) => {
+      setOrders([...orders, newOrder]);
+    }
+    postOrder(newOrder);
+    setFormValues(initialFormValues);
+    
+  };
+
   return (
     <div className="container">
       <header>
         <div className="navigation">
-          <h1>Lambda Eats</h1>
+          <h1>Pizza Your Way</h1>
           <nav>
             <Route path="/">
               <Link to="/home">Home</Link>
@@ -84,7 +111,7 @@ const App = () => {
       <section>
         <Route path="/home">
           <div>
-            <div className="hero">
+            <div className="heroImage">
               <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
             </div>
             <div>
@@ -95,13 +122,23 @@ const App = () => {
         </Route>
         <Route path="/pizza">
           <pizzaForm
-          values={formValues}
-          changeValues={changeValues}
-          // checkboxChange={checkboxChange}
-          // submitUser={submitUser}
-          disabled={formDisabled}
-          errors={formErrors}
+            values={formValues}
+            changeValues={changeValues}
+            checkboxChange={checkboxChange}
+            submitOrder={submitOrder}
+            disabled={formDisabled}
+            errors={formErrors}
           />
+          {orders.map((order) => {
+            return (
+              <div>
+                <h2>{order.name}</h2>
+                <p>sauce: Original</p>
+                <p>{order.size}</p>
+                <p>Special Instructions: {order.special}</p>
+              </div>
+            );
+          })}
         </Route>
       </section>
       <footer></footer>
