@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import "./Assets/Pizza.jpg";
-import "./components/pizzaForm";
+import Form from  "./components/pizzaForm";
 import * as yup from "yup";
 
 const initialFormValues = {
@@ -121,7 +121,7 @@ const App = () => {
           </div>
         </Route>
         <Route path="/pizza">
-          <pizzaForm
+          <Form
             values={formValues}
             changeValues={changeValues}
             checkboxChange={checkboxChange}

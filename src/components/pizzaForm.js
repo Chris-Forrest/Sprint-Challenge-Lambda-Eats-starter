@@ -1,4 +1,18 @@
 import React from "react";
+import styled from "styled-components"
+
+const StyledForm = styled.form`
+display:flex;
+flex-direction:column;
+align-items:center;
+border:1px solid rgb(210, 210, 210 );
+border-radius: 5px;
+box-shadow: 10px 8px 12px -2px rgb(128, 127, 197);
+margin: 8px;
+padding: 12px;
+background-color:white;
+width: 80%;
+`;
 
 export default function Form({
     values,
@@ -9,7 +23,7 @@ export default function Form({
     errors,
   }) {
     return (
-        <form>
+        <StyledForm>
         <h2>Your Order</h2>
         <div className="errors">
             {errors.name}
@@ -23,17 +37,17 @@ export default function Form({
           <option>Large</option>
         </select>
         <h2>Toppings</h2>
-        <label>Olives</label>
-        <input type="checkbox" name="pepperoni" onChange={checkboxChange} />
         <label>Pepperoni</label>
+        <input type="checkbox" name="pepperoni" onChange={checkboxChange} />
+        <label>Mushrooms</label>
         <input type="checkbox" name="mushroom" onChange={checkboxChange} />
-        <label>Greenbell Peppers</label>
+        <label>Sausage</label>
         <input type="checkbox" name="sausage" onChange={checkboxChange} />
-        <label>Onions</label>
+        <label>Olives</label>
         <input type="checkbox" name="olives" onChange={checkboxChange}/>
         <label>Special Instructions</label>
         <input type="text" onChange={changeValues} />
         <button onClick={submitOrder} disabled={disabled}>Place Order</button>
-      </form> 
+      </StyledForm> 
     )
 }
