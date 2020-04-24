@@ -31,20 +31,21 @@ export default function Form({
         <label>Name</label>
         <input type="text" name="name" value={values.name} onChange={changeValues} />
         <label>Size</label>
-        <select value={values.size} onChange={changeValues}>
+        <select name="size" value={values.size} onChange={changeValues}>
+          <option>Choose a Size</option>
           <option>Small</option>
           <option>Medium</option>
           <option>Large</option>
         </select>
         <h2>Toppings</h2>
         <label>Pepperoni</label>
-        <input type="checkbox" name="pepperoni" onChange={checkboxChange} />
+        <input checked={values.toppings.pepperoni} type="checkbox" name="pepperoni" onChange={checkboxChange} />
         <label>Mushrooms</label>
-        <input type="checkbox" name="mushroom" onChange={checkboxChange} />
+        <input checked={values.toppings.mushroom}type="checkbox" name="mushroom" onChange={checkboxChange} />
         <label>Sausage</label>
-        <input type="checkbox" name="sausage" onChange={checkboxChange} />
+        <input checked={values.toppings.sausage}type="checkbox" name="sausage" onChange={checkboxChange} />
         <label>Olives</label>
-        <input type="checkbox" name="olives" onChange={checkboxChange}/>
+        <input checked={values.toppings.sausage}type="checkbox" name="olives" onChange={checkboxChange}/>
         <label>Special Instructions</label>
         <input type="text" onChange={changeValues} />
         <button onClick={submitOrder} disabled={disabled}>Place Order</button>

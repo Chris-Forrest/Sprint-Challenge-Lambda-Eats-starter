@@ -4,6 +4,20 @@ import "./App.css";
 import "./Assets/Pizza.jpg";
 import Form from  "./components/pizzaForm";
 import * as yup from "yup";
+import styled from "styled-components";
+import axios from "axios"
+
+const styledImg = styled.img`
+width:80%;
+height:40%;
+
+`
+const styledNav = styled.nav`
+display:flex;
+justify-content:space evenly;
+font-size: 20px;
+
+`
 
 const initialFormValues = {
   name: '',
@@ -26,6 +40,12 @@ const formValidation = yup.object().shape({
     .string()
     .min(2, "username must have at least 2 characters!")
     .required("username is required!"),
+    size: yup.string(),
+    pepperoni: yup.string(),
+    mushroom: yup.string(),
+    sausage: yup.string(),
+    olives: yup.string(),
+    special: yup.string(),
 });
 
 const App = () => {
@@ -47,8 +67,7 @@ const App = () => {
         });
       })
       .catch((err) => {
-        // dangit, does not validate :(
-        // SET THE ERROR IN THE RIGHT PLACE
+        
         console.log(err);
         setFormErrors({
           ...formErrors,
@@ -68,10 +87,27 @@ const App = () => {
   }, [formValues]);
 
   const checkboxChange = (event) => {
+    const { name } = event.target
+    const isChecked = event.target.checked
     setFormValues({
       ...formValues,
-      [event.target.name]: event.target.checked,
+      toppings: {
+        ...formValues.toppings,
+        [name]: isChecked,
+      }
     });
+  };
+
+  const postOrder = (order) => {
+    axios.post("https://reqres.in/api/orders", order)
+    .then(res => {
+      console.log(res)
+      setOrders([...orders, res.data]);
+    })
+    .catch(err => {
+      debugger
+    })  
+    
   };
 
   const submitOrder = (event) => {
@@ -80,39 +116,38 @@ const App = () => {
     const newOrder = {
       name: formValues.name,
       size: formValues.size,
-      pepperoni: formValues.pepperoni,
-      mushroom: formValues.mushroom,
-      sausage: formValues.sausage,
-      olives: formValues.olives,
-      special: formValues.special
+      specialInstructions: formValues.specialInstructions,
+      toppings: Object.keys(formValues.toppings)                                 
+         .filter(topping => formValues.toppings[topping] === true)                                                             
+      
     };
-    const postOrder = (order) => {
-      setOrders([...orders, newOrder]);
-    }
+
+    
+    // console.log(newUser)
     postOrder(newOrder);
     setFormValues(initialFormValues);
-    
   };
+
 
   return (
     <div className="container">
       <header>
         <div className="navigation">
           <h1>Pizza Your Way</h1>
-          <nav>
+          <styledNav>
             <Route path="/">
               <Link to="/home">Home</Link>
               <Link to="/pizza">Order</Link>
               <Link>Help</Link>
             </Route>
-          </nav>
+          </styledNav>
         </div>
       </header>
       <section>
         <Route path="/home">
           <div>
             <div className="heroImage">
-              <img src={require("./Assets/Pizza.jpg")} alt="a pizza" />
+              <styledImg src={require("./Assets/Pizza.jpg")} alt="a pizza" />
             </div>
             <div>
               <h2>Order Now!</h2>
@@ -134,8 +169,9 @@ const App = () => {
               <div>
                 <h2>{order.name}</h2>
                 <p>sauce: Original</p>
+                <p>Toppings: {order.toppings}</p>
                 <p>{order.size}</p>
-                <p>Special Instructions: {order.special}</p>
+                <p>Special Instructions: {order.specialInstructions}</p>
               </div>
             );
           })}
