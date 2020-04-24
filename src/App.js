@@ -137,7 +137,7 @@ const App = () => {
           <styledNav>
             <Route path="/">
               <Link to="/home">Home</Link>
-              <Link to="/pizza">Order</Link>
+              <Link data-cy_order_link="cy_order_link"to="/pizza">Order</Link>
               <Link>Help</Link>
             </Route>
           </styledNav>
@@ -169,8 +169,8 @@ const App = () => {
               <div>
                 <h2>{order.name}</h2>
                 <p>sauce: Original</p>
-                <p>Toppings: {order.toppings}</p>
                 <p>{order.size}</p>
+                <p>Toppings: {order.toppings}</p>
                 <p>Special Instructions: {order.specialInstructions}</p>
               </div>
             );

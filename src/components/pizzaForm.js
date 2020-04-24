@@ -29,7 +29,7 @@ export default function Form({
             {errors.name}
         </div>
         <label>Name</label>
-        <input type="text" name="name" value={values.name} onChange={changeValues} />
+        <input data-cy_name_input="cy_name_input"type="text" name="name" value={values.name} onChange={changeValues} />
         <label>Size</label>
         <select name="size" value={values.size} onChange={changeValues}>
           <option>Choose a Size</option>
