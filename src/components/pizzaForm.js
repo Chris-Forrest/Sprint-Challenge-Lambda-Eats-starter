@@ -39,13 +39,31 @@ export default function Form({
         </select>
         <h2>Toppings</h2>
         <label>Pepperoni</label>
-        <input checked={values.toppings.pepperoni} type="checkbox" name="pepperoni" onChange={checkboxChange} />
+        <input 
+        data-cy_pepperoni_check="cy_pepperoni_check"
+        checked={values.toppings.pepperoni} 
+        type="checkbox" name="pepperoni" 
+        onChange={checkboxChange} />
         <label>Mushrooms</label>
-        <input checked={values.toppings.mushroom}type="checkbox" name="mushroom" onChange={checkboxChange} />
+        <input 
+        data-cy_mushroom_check="cy_mushroom_check"
+        checked={values.toppings.mushroom}
+        type="checkbox" name="mushroom" 
+        onChange={checkboxChange} />
         <label>Sausage</label>
-        <input checked={values.toppings.sausage}type="checkbox" name="sausage" onChange={checkboxChange} />
+        <input 
+        data-cy_sausage_check="cy_sausage_check"
+        checked={values.toppings.sausage}
+        type="checkbox" 
+        name="sausage" 
+        onChange={checkboxChange} />
         <label>Olives</label>
-        <input checked={values.toppings.sausage}type="checkbox" name="olives" onChange={checkboxChange}/>
+        <input 
+        data-cy_olives_checked="cy_olive_checked"
+        checked={values.toppings.sausage}
+        type="checkbox" 
+        name="olives" 
+        onChange={checkboxChange}/>
         <label>Special Instructions</label>
         <input type="text" onChange={changeValues} />
         <button onClick={submitOrder} disabled={disabled}>Place Order</button>
