@@ -22,13 +22,14 @@ font-size: 20px;
 const initialFormValues = {
   name: '',
   size: 'Select Size',
+  specialInstructions: '',
   toppings: {
     pepperoni: false,
     mushroom: false,
     sausage: false,
     olives: false,
   },
-  specialInstructions: '',
+  
 }
 
 const initialFormErrors = {

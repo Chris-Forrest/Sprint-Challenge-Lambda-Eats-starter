@@ -29,7 +29,11 @@ export default function Form({
             {errors.name}
         </div>
         <label>Name</label>
-        <input data-cy_name_input="cy_name_input"type="text" name="name" value={values.name} onChange={changeValues} />
+        <input data-cy_name_input="cy_name_input"
+        type="text" 
+        name="name" 
+        value={values.name} 
+        onChange={changeValues} />
         <label>Size</label>
         <select name="size" value={values.size} onChange={changeValues}>
           <option>Choose a Size</option>
@@ -60,12 +64,16 @@ export default function Form({
         <label>Olives</label>
         <input 
         data-cy_olives_checked="cy_olive_checked"
-        checked={values.toppings.sausage}
+        checked={values.toppings.olives}
         type="checkbox" 
         name="olives" 
         onChange={checkboxChange}/>
         <label>Special Instructions</label>
-        <input type="text" onChange={changeValues} />
+        <input
+        type="text" 
+        name="specialInstructions"
+        value={values.specialInstructions} 
+        onChange={changeValues} />
         <button onClick={submitOrder} disabled={disabled}>Place Order</button>
       </StyledForm> 
     )
