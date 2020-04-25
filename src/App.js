@@ -169,7 +169,6 @@ const App = () => {
             return (
               <div>
                 <h2>{order.name}</h2>
-                <p>sauce: Original</p>
                 <p>{order.size}</p>
                 <p>Toppings: {order.toppings}</p>
                 <p>Special Instructions: {order.specialInstructions}</p>
