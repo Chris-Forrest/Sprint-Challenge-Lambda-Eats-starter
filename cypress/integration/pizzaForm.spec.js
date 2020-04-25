@@ -25,6 +25,9 @@ describe('user sign up', () => {
     it("check olives", () => {
         cy.get('[data-cy_pepperoni_check="cy_pepperoni_check"]').check().should('checked')
     })
+    it("submit the user", () => {
+        cy.get("form button").click();
+      })
 
 
 

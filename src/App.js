@@ -45,7 +45,7 @@ const formValidation = yup.object().shape({
     mushroom: yup.string(),
     sausage: yup.string(),
     olives: yup.string(),
-    special: yup.string(),
+    specialInstructions: yup.string(),
 });
 
 const App = () => {
